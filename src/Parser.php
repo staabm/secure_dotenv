@@ -88,7 +88,7 @@ class Parser
      * @param string $configPath
      * @throws InvalidArgumentException If the path is invalid
      */
-    public function setConfigPath($configPath)
+    public function setConfigPath(string $configPath)
     {
         if (empty($configPath) || !is_file($configPath)) {
             throw new InvalidArgumentException('Invalid config file path: ' . $configPath);
