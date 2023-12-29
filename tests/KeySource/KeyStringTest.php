@@ -1,6 +1,6 @@
 <?php
 
-namespace Psecio\SecureDotenv\KeySource;
+namespace staabm\SecureDotenv\KeySource;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

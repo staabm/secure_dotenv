@@ -1,9 +1,9 @@
 <?php
 
-namespace Psecio\SecureDotenv\KeySource;
+namespace staabm\SecureDotenv\KeySource;
 
 use InvalidArgumentException;
-use Psecio\SecureDotenv\KeySource;
+use staabm\SecureDotenv\KeySource;
 
 class KeyFile extends KeySource
 {

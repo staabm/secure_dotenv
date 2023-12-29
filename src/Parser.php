@@ -1,6 +1,6 @@
 <?php
 
-namespace Psecio\SecureDotenv;
+namespace staabm\SecureDotenv;
 
 use Exception;
 use InvalidArgumentException;

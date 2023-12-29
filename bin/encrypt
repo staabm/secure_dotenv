@@ -65,7 +65,7 @@ try {
         $overwrite = true;
     }
 
-    $d = new \Psecio\SecureDotenv\Parser($keyPath, $envFile);
+    $d = new \staabm\SecureDotenv\Parser($keyPath, $envFile);
 
     if ($d->save($envName, $envValue, $overwrite)) {
         $climate->out('Encrypted value for "'.$envName.'" has been added to '.$envFile);

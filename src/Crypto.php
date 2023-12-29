@@ -1,6 +1,6 @@
 <?php
 
-namespace Psecio\SecureDotenv;
+namespace staabm\SecureDotenv;
 
 use Defuse\Crypto\Crypto as DefuseCrypto;
 use Defuse\Crypto\Key as DefuseKey;

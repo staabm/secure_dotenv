@@ -4,7 +4,7 @@ The `secure_dotenv` library provides an easy way to handle the encryption and de
 
 One of the generally accepted security best practices is preventing the use of hard-coded, plain-text credentials of any kind. This library allows you to store the values in your `.env` as encrypted strings but still be able to access them transparently without worrying about implementing your own encryption method.
 
-[![Travis-CI Build Status](https://secure.travis-ci.org/psecio/secure_dotenv.png?branch=master)](http://travis-ci.org/psecio/secure_dotenv)
+[![Travis-CI Build Status](https://secure.travis-ci.org/staabm/secure_dotenv.png?branch=master)](http://travis-ci.org/staabm/secure_dotenv)
 
 ## Installation
 
@@ -13,7 +13,7 @@ One of the generally accepted security best practices is preventing the use of h
 You can install the library easily with a Composer `require` call on the command line:
 
 ```
-composer require psecio/secure_dotenv
+composer require staabm/secure_dotenv
 ```
 
 ### Generate the key
@@ -47,7 +47,7 @@ require_once __DIR__.'/vendor/autoload.php';
 $keyfile = __DIR__.'/keyfile';
 $envFile = __DIR__.'/.env';
 
-$d = new \Psecio\SecureDotenv\Parser($keyfile, $envFile);
+$d = new \staabm\SecureDotenv\Parser($keyfile, $envFile);
 
 // The contents here is the set of all decrypted values fron the .env
 print_r($d->getContent());
@@ -63,7 +63,7 @@ require_once __DIR__.'/vendor/autoload.php';
 $key = $_ENV['ENCRYPTION_KEY'];
 $envFile = __DIR__.'/.env';
 
-$d = new \Psecio\SecureDotenv\Parser($key, $envFile);
+$d = new \staabm\SecureDotenv\Parser($key, $envFile);
 
 ?>
 ```
@@ -84,7 +84,7 @@ require_once __DIR__.'/vendor/autoload.php';
 $keyfile = __DIR__.'/keyfile';
 $envFile = __DIR__.'/.env';
 
-$d = new \Psecio\SecureDotenv\Parser($keyfile, $envFile);
+$d = new \staabm\SecureDotenv\Parser($keyfile, $envFile);
 
 $keyName = 'test1';
 $keyValue = 'foobarbaz';
@@ -103,7 +103,7 @@ There's no need to worry about encrypting the value as the library takes care of
 This library also comes with a handy way to encrypt values and write them out to the `.env` configuration automatically:
 
 ```
-vendor/psecio/secure_dotenv/bin/encrypt --keyfile=/path/to/keyfile
+vendor/staabm/secure_dotenv/bin/encrypt --keyfile=/path/to/keyfile
 ```
 
 This tool will ask a few questions about the location of the `.env` file and the key/value pair to set. When it completes it will write the new, encrypted, value to the `.env` file. If a value is already set in the configuration and you want to overwrite it, call the `encrypt` script with the `--override` command line flag.

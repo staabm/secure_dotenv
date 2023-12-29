@@ -1,25 +1,18 @@
 {
-    "name":"psecio/secure_dotenv",
+    "name":"staabm/secure_dotenv",
     "type":"library",
     "description":"An encrypted environment configuration handler",
     "keywords":["encryption", "configuration", "environment"],
-    "homepage":"https://github.com/psecio/secure_dotenv.git",
+
     "license":"MIT",
-    "authors":[
-        {
-            "name":"Chris Cornutt",
-            "email":"ccornutt@phpdeveloper.org",
-            "homepage":"http://www.phpdeveloper.org/"
-        }
-    ],
     "autoload":{
         "psr-4":{
-            "Psecio\\SecureDotenv\\":"src/"
+            "staabm\\SecureDotenv\\":"src/"
         }
     },
     "autoload-dev":{
         "psr-4":{
-            "Psecio\\SecureDotenv\\":"tests/"
+            "staabm\\SecureDotenv\\":"tests/"
         }
     },
     "require":{
