@@ -8,7 +8,7 @@ use function is_array;
 
 class File
 {
-    public static function read($path): array
+    public static function read(string $path): array
     {
         $realpath = realpath($path);
         if (false == $realpath || !is_file($path)) {
