@@ -43,7 +43,6 @@ class CryptoTest extends TestCase
 
         static::assertNotEquals($value, $encrypted);
         static::assertEquals($value, $c->decrypt($encrypted));
-
     }
 
     public function testDecryptWithInvalidValue()

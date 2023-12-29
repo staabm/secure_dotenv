@@ -39,6 +39,5 @@ class File
             return file_put_contents($path, $output);
         }
         echo $output;
-
     }
 }
