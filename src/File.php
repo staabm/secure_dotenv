@@ -8,7 +8,7 @@ use function is_array;
 
 class File
 {
-    public static function read($path): array
+    public static function read(string $path): array
     {
         $realpath = realpath($path);
         if (false == $realpath || !is_file($path)) {
@@ -19,7 +19,12 @@ class File
         return $results;
     }
 
-    public static function write($data, $path = null)
+    /**
+     * @param string|array $data
+     *
+     * @return ($path is null ? void : bool)
+     */
+    public static function write($data, ?string $path = null)
     {
         $output = '';
         foreach ($data as $index => $data) {

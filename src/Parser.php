@@ -67,9 +67,8 @@ class Parser
      * Read in the configuration file.
      *
      * @param string $configPath Configuration file path
-     * @return string
      */
-    public function loadFile($configPath)
+    public function loadFile(string $configPath): array
     {
         $contents = $this->decryptValues(File::read($configPath));
         return $contents;
@@ -89,7 +88,7 @@ class Parser
      * @param string $configPath
      * @throws InvalidArgumentException If the path is invalid
      */
-    public function setConfigPath($configPath)
+    public function setConfigPath(string $configPath)
     {
         if (empty($configPath) || !is_file($configPath)) {
             throw new InvalidArgumentException('Invalid config file path: ' . $configPath);
@@ -105,7 +104,7 @@ class Parser
      * @param bool $overwrite Flag to either overwrite the value that exists or leave it
      * @return bool Success/fail of the write
      */
-    public function save($keyName, $keyValue, $overwrite = false)
+    public function save($keyName, $keyValue, $overwrite = false): bool
     {
         return $this->writeEnv($keyName, $keyValue, $overwrite);
     }
@@ -118,7 +117,7 @@ class Parser
      * @throws Exception If the key name already exists and the overwrite flag isn't true
      * @return bool Success/fail of file write
      */
-    public function writeEnv($keyName, $keyValue, $overwrite = false)
+    public function writeEnv(string $keyName, $keyValue, bool $overwrite = false)
     {
         $contents = $this->loadFile($this->configPath);
 
