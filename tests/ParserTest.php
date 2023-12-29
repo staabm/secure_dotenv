@@ -1,17 +1,23 @@
 <?php
+
 namespace Psecio\SecureDotenv;
 
+use Exception;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class ParserTest extends TestCase
 {
     private $keyPath;
     private $envPath;
 
-    public function setUp() : void
+    protected function setUp(): void
     {
-        $this->keyPath = __DIR__.'/test-encryption-key.txt';
-        $this->envPath =  __DIR__.'/.env';
+        $this->keyPath = __DIR__ . '/test-encryption-key.txt';
+        $this->envPath = __DIR__ . '/.env';
 
         // Clear out the config
         file_put_contents($this->envPath, '');
@@ -20,14 +26,14 @@ class ParserTest extends TestCase
     public function testConstructor()
     {
         $parser = new Parser($this->keyPath, $this->envPath);
-        $this->assertInstanceOf(Parser::class, $parser);
+        static::assertInstanceOf(Parser::class, $parser);
     }
 
     public function testSetConfigPathWithInvalidPath()
     {
         $parser = new Parser($this->keyPath, $this->envPath);
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid config file path: invalid_config_file');
         $parser->setConfigPath('invalid_config_file');
     }
@@ -38,7 +44,7 @@ class ParserTest extends TestCase
         $parser = new Parser($this->keyPath, $this->envPath);
         $parser->setCrypto($c);
 
-        $this->assertEquals(190, $parser->save('env1', 'test1234', true));
+        static::assertEquals(190, $parser->save('env1', 'test1234', true));
     }
 
     public function testWriteEnvWithDuplicatedEnv()
@@ -49,7 +55,7 @@ class ParserTest extends TestCase
 
         $parser->save('env1', '123456', true);
 
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('Key name "env1" already exists!');
         $parser->writeEnv('env1', 'overwrite_value1');
     }
@@ -63,6 +69,6 @@ class ParserTest extends TestCase
 
         // Now reparse the file
         $parser = new Parser($this->keyPath, $this->envPath);
-        $this->assertEquals($content, $parser->getContent('readwrite1'));
+        static::assertEquals($content, $parser->getContent('readwrite1'));
     }
 }
