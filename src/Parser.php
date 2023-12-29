@@ -68,7 +68,7 @@ class Parser
      *
      * @param string $configPath Configuration file path
      */
-    public function loadFile($configPath): array
+    public function loadFile(string $configPath): array
     {
         $contents = $this->decryptValues(File::read($configPath));
         return $contents;
