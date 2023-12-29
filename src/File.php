@@ -24,7 +24,7 @@ class File
      *
      * @return ($path is null ? void : bool)
      */
-    public static function write($data, ?string $path = null)
+    public static function write($data, string $path = null)
     {
         $output = '';
         foreach ($data as $index => $data) {
