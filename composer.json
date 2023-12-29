@@ -36,6 +36,5 @@
         "cs": "vendor/bin/php-cs-fixer fix --ansi",
         "phpstan": "vendor/bin/phpstan --ansi",
         "test": "vendor/bin/phpunit tests/"
-        "phpunit/phpunit": "^7.1 || ^9"
     }
 }
