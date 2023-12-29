@@ -19,11 +19,4 @@ class KeyStringTest extends TestCase
         static::assertEquals($keyString, $key->getContent());
     }
 
-    public function testInvalidInit()
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        $keyString = new stdClass();
-        new KeyString($keyString); // @phpstan-ignore-line
-    }
 }

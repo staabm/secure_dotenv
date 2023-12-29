@@ -14,11 +14,8 @@ class KeyString extends KeySource
      *
      * @param string $source File path for the key
      */
-    public function __construct($source)
+    public function __construct(string $source)
     {
-        if (!is_string($source)) {
-            throw new InvalidArgumentException('Invalid source: ' . print_r($source, true));
-        }
         $this->setContent($source);
     }
 }
