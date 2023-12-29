@@ -31,7 +31,7 @@
         }
     },
     "bin": [
-        "bin/encrypt"
+        "bin/encrypt-env"
     ],
     "scripts": {
         "cs": "vendor/bin/php-cs-fixer fix --ansi",
