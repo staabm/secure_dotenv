@@ -117,7 +117,7 @@ class Parser
      * @throws Exception If the key name already exists and the overwrite flag isn't true
      * @return bool Success/fail of file write
      */
-    public function writeEnv($keyName, $keyValue, $overwrite = false)
+    public function writeEnv(string $keyName, $keyValue, bool $overwrite = false)
     {
         $contents = $this->loadFile($this->configPath);
 
