@@ -13,7 +13,7 @@ class KeyFile extends KeySource
      * @param string $source Key file path
      * @throws InvalidArgumentException If the file path is invalid
      */
-    public function __construct($source)
+    public function __construct(string $source)
     {
         if (!is_file($source)) {
             throw new InvalidArgumentException('Invalid source: ' . $source);
