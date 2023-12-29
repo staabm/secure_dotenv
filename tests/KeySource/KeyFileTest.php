@@ -1,10 +1,10 @@
 <?php
 
-namespace Psecio\SecureDotenv;
+namespace staabm\SecureDotenv;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Psecio\SecureDotenv\KeySource\KeyFile;
+use staabm\SecureDotenv\KeySource\KeyFile;
 
 /**
  * @internal

@@ -1,39 +1,38 @@
 {
-    "name":"psecio/secure_dotenv",
-    "type":"library",
-    "description":"An encrypted environment configuration handler",
-    "keywords":["encryption", "configuration", "environment"],
-    "homepage":"https://github.com/psecio/secure_dotenv.git",
-    "license":"MIT",
-    "authors":[
-        {
-            "name":"Chris Cornutt",
-            "email":"ccornutt@phpdeveloper.org",
-            "homepage":"http://www.phpdeveloper.org/"
-        }
+    "name": "staabm/secure_dotenv",
+    "description": "An encrypted environment configuration handler",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "encryption",
+        "configuration",
+        "environment"
     ],
-    "autoload":{
-        "psr-4":{
-            "Psecio\\SecureDotenv\\":"src/"
-        }
-    },
-    "autoload-dev":{
-        "psr-4":{
-            "Psecio\\SecureDotenv\\":"tests/"
-        }
-    },
-    "require":{
+    "require": {
         "php": "^7.4 || ^8.0",
         "defuse/php-encryption": "^2.2",
         "enygma/cmd": "^0.4.0",
         "league/climate": "^3.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9 || ^10.5",
-        "phpstan/phpstan": "^1.10",
         "friendsofphp/php-cs-fixer": "^3.43",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^9 || ^10.5",
         "redaxo/php-cs-fixer-config": "^1.0"
     },
+    "autoload": {
+        "psr-4": {
+            "staabm\\SecureDotenv\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "staabm\\SecureDotenv\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/encrypt"
+    ],
     "scripts": {
         "cs": "vendor/bin/php-cs-fixer fix --ansi",
         "phpstan": "vendor/bin/phpstan --ansi",

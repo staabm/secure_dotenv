@@ -1,10 +1,9 @@
 <?php
 
-namespace Psecio\SecureDotenv;
+namespace staabm\SecureDotenv;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Psecio\SecureDotenv\KeySource\KeyString;
+use staabm\SecureDotenv\KeySource\KeyString;
 
 /**
  * @internal
@@ -51,5 +50,4 @@ class CryptoTest extends TestCase
 
         static::assertNull($c->decrypt('invalid_value'));
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Psecio\SecureDotenv;
+namespace staabm\SecureDotenv;
 
 use InvalidArgumentException;
 
@@ -24,7 +24,7 @@ class File
      *
      * @return ($path is null ? void : bool)
      */
-    public static function write($data, ?string $path = null)
+    public static function write($data, string $path = null)
     {
         $output = '';
         foreach ($data as $index => $data) {

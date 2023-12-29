@@ -1,11 +1,8 @@
 <?php
 
-namespace Psecio\SecureDotenv\KeySource;
+namespace staabm\SecureDotenv\KeySource;
 
-use InvalidArgumentException;
-use Psecio\SecureDotenv\KeySource;
-
-use function is_string;
+use staabm\SecureDotenv\KeySource;
 
 class KeyString extends KeySource
 {
