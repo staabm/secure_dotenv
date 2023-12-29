@@ -2,13 +2,17 @@
 
 namespace Psecio\SecureDotenv;
 
+use InvalidArgumentException;
+
+use function is_array;
+
 class File
 {
-    public static function read($path) : array
+    public static function read($path): array
     {
         $realpath = realpath($path);
-        if ($realpath == false || !is_file($path)) {
-            throw new \InvalidArgumentException('Invalid path: '.$path);
+        if (false == $realpath || !is_file($path)) {
+            throw new InvalidArgumentException('Invalid path: ' . $path);
         }
 
         $results = parse_ini_file($realpath, true);
@@ -21,20 +25,19 @@ class File
         foreach ($data as $index => $data) {
             // See if it's a section
             if (is_array($data)) {
-                $output .= '['.$index.']';
+                $output .= '[' . $index . ']';
                 foreach ($data as $i => $d) {
-                    $output .= $i.'='.$d."\n";
+                    $output .= $i . '=' . $d . "\n";
                 }
                 $output .= "\n";
             } else {
-                $output .= $index.'='.$data."\n";
+                $output .= $index . '=' . $data . "\n";
             }
         }
 
-        if ($path !== null) {
+        if (null !== $path) {
             return file_put_contents($path, $output);
-        } else {
-            echo $output;
         }
+        echo $output;
     }
 }

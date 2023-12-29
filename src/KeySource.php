@@ -5,14 +5,14 @@ namespace Psecio\SecureDotenv;
 abstract class KeySource
 {
     /**
-     * Content of the key
+     * Content of the key.
      *
      * @var string
      */
     protected $content;
 
     /**
-     * Get the current key contents
+     * Get the current key contents.
      *
      * @return string
      */
@@ -22,7 +22,7 @@ abstract class KeySource
     }
 
     /**
-     * Set the current key content
+     * Set the current key content.
      *
      * @param string $content
      */

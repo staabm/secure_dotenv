@@ -2,20 +2,23 @@
 
 namespace Psecio\SecureDotenv;
 
-use Defuse\Crypto\Key as DefuseKey;
 use Defuse\Crypto\Crypto as DefuseCrypto;
+use Defuse\Crypto\Key as DefuseKey;
+use InvalidArgumentException;
+
+use function is_string;
 
 class Crypto
 {
     /**
-     * Current key value (either File or String version)
+     * Current key value (either File or String version).
      *
-     * @var \Psecio\SecureDotenv\KeySource
+     * @var KeySource
      */
     private $key;
 
     /**
-     * Init the object and set up the key
+     * Init the object and set up the key.
      *
      * @param string $key The "key" value, either a string or a file path
      */
@@ -25,10 +28,10 @@ class Crypto
     }
 
     /**
-     * Create the key instance based on either a string or file path
+     * Create the key instance based on either a string or file path.
      *
      * @param string $key The "key" value, either a string or a file path
-     * @return \Psecio\SecureDotenv\KeySource instance
+     * @return KeySource instance
      */
     public function createKey($key)
     {
@@ -37,14 +40,14 @@ class Crypto
         } elseif (is_string($key)) {
             $key = new KeySource\KeyString($key);
         } else {
-            throw new \InvalidArgumentException('Could not create key from value provided.');
+            throw new InvalidArgumentException('Could not create key from value provided.');
         }
 
         return $key;
     }
 
     /**
-     * Set the currekt key instance
+     * Set the currekt key instance.
      *
      * @param KeySource $key instance
      */
@@ -54,9 +57,9 @@ class Crypto
     }
 
     /**
-     * Return the current key instance
+     * Return the current key instance.
      *
-     * @return \Psecio\SecureDotenv\KeySource instance
+     * @return KeySource instance
      */
     public function getKey()
     {
@@ -64,7 +67,7 @@ class Crypto
     }
 
     /**
-     * Encrypt the value provided with the current key and the Defuse library
+     * Encrypt the value provided with the current key and the Defuse library.
      *
      * @param string $value Value to encrypt
      * @return string Ciphertext (encrypted) value
@@ -79,7 +82,7 @@ class Crypto
     /**
      * Decrypt the ciphertext value provided
      * This method also catches values that may not be encrypted
-     * and returns them normally
+     * and returns them normally.
      *
      * @param string $value Ciphertext (encrypted) string
      * @return mixed The value if it could be decrypted, otherwse null

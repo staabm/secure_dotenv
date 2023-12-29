@@ -30,7 +30,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9 || ^10.5",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.43",
+        "redaxo/php-cs-fixer-config": "^1.0"
     },
     "scripts": {
         "cs": "vendor/bin/php-cs-fixer fix --ansi",

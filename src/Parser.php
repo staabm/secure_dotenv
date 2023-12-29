@@ -2,19 +2,24 @@
 
 namespace Psecio\SecureDotenv;
 
+use Exception;
+use InvalidArgumentException;
+
+use function is_array;
+
 class Parser
 {
     /**
-     * Path on disk to the .env configuration file
+     * Path on disk to the .env configuration file.
      *
      * @var string
      */
     protected $configPath;
 
     /**
-     * The current instance of the Crypto class
+     * The current instance of the Crypto class.
      *
-     * @var \Psecio\SecureDotenv\Crypto
+     * @var Crypto
      */
     protected $crypto;
 
@@ -30,37 +35,36 @@ class Parser
     {
         $this->setCrypto(new Crypto($key));
 
-        if ($configPath == null) {
-            $configPath = __DIR__.'/.env';
+        if (null == $configPath) {
+            $configPath = __DIR__ . '/.env';
         }
         $this->setConfigPath($configPath);
     }
 
     /**
      * Decrypt the values provided
-     * Supports sections
+     * Supports sections.
      *
-     * @param array $values
      * @return array Decrypted values
      */
-    public function decryptValues(array $values) : array
+    public function decryptValues(array $values): array
     {
         foreach ($values as $index => $value) {
             if (is_array($value)) {
                 foreach ($value as $i => $v) {
                     $de = $this->crypto->decrypt(trim($v));
-                    $values[$index][$i] = ($de == null) ? $v : $de;
+                    $values[$index][$i] = (null == $de) ? $v : $de;
                 }
             } else {
                 $de = $this->crypto->decrypt(trim($value));
-                $values[$index] = ($de == null) ? $value : $de;
+                $values[$index] = (null == $de) ? $value : $de;
             }
         }
         return $values;
     }
 
     /**
-     * Read in the configuration file
+     * Read in the configuration file.
      *
      * @param string $configPath Configuration file path
      * @return string
@@ -72,9 +76,7 @@ class Parser
     }
 
     /**
-     * Set the current instance of the Crypto class
-     *
-     * @param \Psecio\SecureDotenv\Crypto $crypto
+     * Set the current instance of the Crypto class.
      */
     public function setCrypto(Crypto $crypto)
     {
@@ -82,26 +84,26 @@ class Parser
     }
 
     /**
-     * Set the path for the current configuration file
+     * Set the path for the current configuration file.
      *
      * @param string $configPath
-     * @throws \InvalidArgumentException If the path is invalid
+     * @throws InvalidArgumentException If the path is invalid
      */
     public function setConfigPath($configPath)
     {
         if (empty($configPath) || !is_file($configPath)) {
-            throw new \InvalidArgumentException('Invalid config file path: '.$configPath);
+            throw new InvalidArgumentException('Invalid config file path: ' . $configPath);
         }
         $this->configPath = $configPath;
     }
 
     /**
-     * Save a new encrypted value to the .env file
+     * Save a new encrypted value to the .env file.
      *
      * @param string $keyName Key name (plain-text)
      * @param string $keyValue Value to set for the key (plain-text)
-     * @param boolean $overwrite Flag to either overwrite the value that exists or leave it
-     * @return boolean Success/fail of the write
+     * @param bool $overwrite Flag to either overwrite the value that exists or leave it
+     * @return bool Success/fail of the write
      */
     public function save($keyName, $keyValue, $overwrite = false)
     {
@@ -109,21 +111,20 @@ class Parser
     }
 
     /**
-     * Write the contents out to the .env configuration file
+     * Write the contents out to the .env configuration file.
      *
      * @param string $keyName Key name (plain-text)
-     * @param string $ciphertext Encrypted value
-     * @param boolean $overwrite Flag to either overwrite the value that exists or leave it
-     * @throws \Exception If the key name already exists and the overwrite flag isn't true
-     * @return boolean Success/fail of file write
+     * @param bool $overwrite Flag to either overwrite the value that exists or leave it
+     * @throws Exception If the key name already exists and the overwrite flag isn't true
+     * @return bool Success/fail of file write
      */
     public function writeEnv($keyName, $keyValue, $overwrite = false)
     {
         $contents = $this->loadFile($this->configPath);
 
         // read from the .env file, update any that need it or add a new one
-        if (isset($contents[$keyName]) && $overwrite == false) {
-            throw new \Exception('Key name "'.$keyName.'" already exists!');
+        if (isset($contents[$keyName]) && false == $overwrite) {
+            throw new Exception('Key name "' . $keyName . '" already exists!');
         }
 
         // If it's not already set (or overwrite is true), write it out
@@ -143,7 +144,7 @@ class Parser
     }
 
     /**
-     * Get the contents of the current configuration file
+     * Get the contents of the current configuration file.
      *
      * @param string $keyName Name of key to locate [optional]
      * @return array|string
@@ -152,7 +153,7 @@ class Parser
     {
         $contents = $this->loadFile($this->configPath);
 
-        if ($keyName !== null && isset($contents[$keyName])) {
+        if (null !== $keyName && isset($contents[$keyName])) {
             return $contents[$keyName];
         }
         return $contents;
