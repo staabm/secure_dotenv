@@ -24,6 +24,6 @@ class KeyStringTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $keyString = new stdClass();
-        new KeyString($keyString);
+        new KeyString($keyString); // @phpstan-ignore-line
     }
 }

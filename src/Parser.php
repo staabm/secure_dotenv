@@ -67,9 +67,8 @@ class Parser
      * Read in the configuration file.
      *
      * @param string $configPath Configuration file path
-     * @return string
      */
-    public function loadFile($configPath)
+    public function loadFile($configPath): array
     {
         $contents = $this->decryptValues(File::read($configPath));
         return $contents;
@@ -105,7 +104,7 @@ class Parser
      * @param bool $overwrite Flag to either overwrite the value that exists or leave it
      * @return bool Success/fail of the write
      */
-    public function save($keyName, $keyValue, $overwrite = false)
+    public function save($keyName, $keyValue, $overwrite = false): bool
     {
         return $this->writeEnv($keyName, $keyValue, $overwrite);
     }

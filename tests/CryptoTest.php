@@ -58,6 +58,6 @@ class CryptoTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Could not create key from value provided.');
-        $c->createKey(1000);
+        $c->createKey("1000");
     }
 }
