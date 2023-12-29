@@ -35,6 +35,6 @@
     "scripts": {
         "cs": "vendor/bin/php-cs-fixer fix --ansi",
         "phpstan": "vendor/bin/phpstan --ansi",
-        "test": "vendor/bin/phpunit tests/"
+        "test": "vendor/bin/phpunit tests/ && git restore tests/.env"
     }
 }
