@@ -2,7 +2,6 @@
 
 namespace staabm\SecureDotenv;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use staabm\SecureDotenv\KeySource\KeyString;
 
@@ -51,5 +50,4 @@ class CryptoTest extends TestCase
 
         static::assertNull($c->decrypt('invalid_value'));
     }
-
 }

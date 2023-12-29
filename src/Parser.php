@@ -85,7 +85,6 @@ class Parser
     /**
      * Set the path for the current configuration file.
      *
-     * @param string $configPath
      * @throws InvalidArgumentException If the path is invalid
      */
     public function setConfigPath(string $configPath)

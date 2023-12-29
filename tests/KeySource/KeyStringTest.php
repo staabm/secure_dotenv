@@ -2,9 +2,7 @@
 
 namespace staabm\SecureDotenv\KeySource;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 
 /**
  * @internal
@@ -18,5 +16,4 @@ class KeyStringTest extends TestCase
 
         static::assertEquals($keyString, $key->getContent());
     }
-
 }

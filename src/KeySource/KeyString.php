@@ -2,10 +2,7 @@
 
 namespace staabm\SecureDotenv\KeySource;
 
-use InvalidArgumentException;
 use staabm\SecureDotenv\KeySource;
-
-use function is_string;
 
 class KeyString extends KeySource
 {
