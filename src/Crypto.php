@@ -33,7 +33,7 @@ class Crypto
      * @param string $key The "key" value, either a string or a file path
      * @return KeySource instance
      */
-    public function createKey($key)
+    public function createKey(string $key)
     {
         if (is_file($key)) {
             $key = new KeySource\KeyFile($key);

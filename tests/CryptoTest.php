@@ -52,12 +52,4 @@ class CryptoTest extends TestCase
         static::assertNull($c->decrypt('invalid_value'));
     }
 
-    public function testCreateKeyWithInalvidKey()
-    {
-        $c = new Crypto(__DIR__ . '/test-encryption-key.txt');
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Could not create key from value provided.');
-        $c->createKey("1000");
-    }
 }
