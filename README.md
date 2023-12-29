@@ -105,3 +105,8 @@ vendor/staabm/secure_dotenv/bin/encrypt --keyfile=/path/to/keyfile
 ```
 
 This tool will ask a few questions about the location of the `.env` file and the key/value pair to set. When it completes it will write the new, encrypted, value to the `.env` file. If a value is already set in the configuration and you want to overwrite it, call the `encrypt` script with the `--override` command line flag.
+
+
+## Credits
+
+this package is a maintained for of https://github.com/psecio/secure_dotenv originally created by [Chris Cornutt aka @enygma](https://github.com/enygma) 
