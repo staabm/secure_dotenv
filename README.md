@@ -101,7 +101,7 @@ There's no need to worry about encrypting the value as the library takes care of
 This library also comes with a handy way to encrypt values and write them out to the `.env` configuration automatically:
 
 ```
-vendor/staabm/secure_dotenv/bin/encrypt --keyfile=/path/to/keyfile
+vendor/bin/encrypt-env --keyfile=/path/to/keyfile
 ```
 
 This tool will ask a few questions about the location of the `.env` file and the key/value pair to set. When it completes it will write the new, encrypted, value to the `.env` file. If a value is already set in the configuration and you want to overwrite it, call the `encrypt` script with the `--override` command line flag.
