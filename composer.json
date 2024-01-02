@@ -10,6 +10,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
+        "ext-openssl": "*",
         "defuse/php-encryption": "^2.2",
         "enygma/cmd": "^0.4.0",
         "league/climate": "^3.4"
