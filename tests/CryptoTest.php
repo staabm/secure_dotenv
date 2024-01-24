@@ -28,7 +28,7 @@ class CryptoTest extends TestCase
         static::assertEquals($c->getKey()->getContent(), $keyString);
 
         // Reset it
-        $key = new KeySource\KeyString('test123');
+        $key = new KeyString('test123');
         $c->setKey($key);
 
         static::assertEquals($c->getKey()->getContent(), 'test123');
