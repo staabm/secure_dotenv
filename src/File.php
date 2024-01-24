@@ -3,6 +3,7 @@
 namespace staabm\SecureDotenv;
 
 use InvalidArgumentException;
+use RuntimeException;
 
 use function is_array;
 
@@ -16,6 +17,12 @@ class File
         }
 
         $results = parse_ini_file($realpath, true);
+        if (false === $results) {
+            $lastError = error_get_last();
+
+            throw new RuntimeException('Could not parse ini file: ' . ($lastError['message'] ?? 'Unknown error'));
+        }
+
         return $results;
     }
 
