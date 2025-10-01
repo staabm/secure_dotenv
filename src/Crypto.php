@@ -22,7 +22,10 @@ class Crypto
      *
      * @param string $key The "key" value, either a string or a file path
      */
-    public function __construct($key)
+    public function __construct(
+        #[\SensitiveParameter]
+        $key
+    )
     {
         $this->setKey($this->createKey($key));
     }
@@ -33,7 +36,10 @@ class Crypto
      * @param string $key The "key" value, either a string or a file path
      * @return KeySource instance
      */
-    public function createKey(string $key)
+    public function createKey(
+        #[\SensitiveParameter]
+        string $key
+    )
     {
         if (is_file($key)) {
             $key = new KeySource\KeyFile($key);
@@ -72,7 +78,10 @@ class Crypto
      * @param string $value Value to encrypt
      * @return string Ciphertext (encrypted) value
      */
-    public function encrypt($value)
+    public function encrypt(
+        #[\SensitiveParameter]
+        $value
+    )
     {
         // Get the key contents, no sense in keeping it in memory for too long
         $keyAscii = trim($this->key->getContent());
@@ -87,7 +96,10 @@ class Crypto
      * @param string $value Ciphertext (encrypted) string
      * @return mixed The value if it could be decrypted, otherwse null
      */
-    public function decrypt($value)
+    public function decrypt(
+        #[\SensitiveParameter]
+        $value
+    )
     {
         try {
             $keyAscii = trim($this->key->getContent());
