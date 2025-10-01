@@ -25,8 +25,7 @@ class Crypto
     public function __construct(
         #[\SensitiveParameter]
         $key
-    )
-    {
+    ) {
         $this->setKey($this->createKey($key));
     }
 
@@ -39,8 +38,7 @@ class Crypto
     public function createKey(
         #[\SensitiveParameter]
         string $key
-    )
-    {
+    ) {
         if (is_file($key)) {
             $key = new KeySource\KeyFile($key);
         } elseif (is_string($key)) {
@@ -81,8 +79,7 @@ class Crypto
     public function encrypt(
         #[\SensitiveParameter]
         $value
-    )
-    {
+    ) {
         // Get the key contents, no sense in keeping it in memory for too long
         $keyAscii = trim($this->key->getContent());
         return DefuseCrypto::encrypt($value, DefuseKey::loadFromAsciiSafeString($keyAscii));
@@ -99,8 +96,7 @@ class Crypto
     public function decrypt(
         #[\SensitiveParameter]
         $value
-    )
-    {
+    ) {
         try {
             $keyAscii = trim($this->key->getContent());
             $value = DefuseCrypto::decrypt($value, DefuseKey::loadFromAsciiSafeString($keyAscii));

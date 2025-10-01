@@ -14,8 +14,7 @@ class KeyString extends KeySource
     public function __construct(
         #[\SensitiveParameter]
         string $source
-    )
-    {
+    ) {
         $this->setContent($source);
     }
 }

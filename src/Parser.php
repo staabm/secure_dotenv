@@ -35,8 +35,7 @@ class Parser
         #[\SensitiveParameter]
         $key,
         $configPath = null
-    )
-    {
+    ) {
         $this->setCrypto(new Crypto($key));
 
         if (null == $configPath) {
@@ -54,8 +53,7 @@ class Parser
     public function decryptValues(
         #[\SensitiveParameter]
         array $values
-    ): array
-    {
+    ): array {
         foreach ($values as $index => $value) {
             if (is_array($value)) {
                 foreach ($value as $i => $v) {
@@ -115,8 +113,7 @@ class Parser
         #[\SensitiveParameter]
         $keyValue,
         $overwrite = false
-    ): bool
-    {
+    ): bool {
         return $this->writeEnv($keyName, $keyValue, $overwrite);
     }
 
@@ -133,8 +130,7 @@ class Parser
         #[\SensitiveParameter]
         $keyValue,
         bool $overwrite = false
-    )
-    {
+    ) {
         $contents = $this->loadFile($this->configPath);
 
         // read from the .env file, update any that need it or add a new one
