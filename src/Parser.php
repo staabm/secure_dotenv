@@ -31,8 +31,11 @@ class Parser
      * @param string $key Key value or file path to key
      * @param string $configPath Path to the .env configuration file
      */
-    public function __construct($key, $configPath = null)
-    {
+    public function __construct(
+        #[\SensitiveParameter]
+        $key,
+        $configPath = null
+    ) {
         $this->setCrypto(new Crypto($key));
 
         if (null == $configPath) {
@@ -47,8 +50,10 @@ class Parser
      *
      * @return array Decrypted values
      */
-    public function decryptValues(array $values): array
-    {
+    public function decryptValues(
+        #[\SensitiveParameter]
+        array $values
+    ): array {
         foreach ($values as $index => $value) {
             if (is_array($value)) {
                 foreach ($value as $i => $v) {
@@ -103,8 +108,12 @@ class Parser
      * @param bool $overwrite Flag to either overwrite the value that exists or leave it
      * @return bool Success/fail of the write
      */
-    public function save($keyName, $keyValue, $overwrite = false): bool
-    {
+    public function save(
+        $keyName,
+        #[\SensitiveParameter]
+        $keyValue,
+        $overwrite = false
+    ): bool {
         return $this->writeEnv($keyName, $keyValue, $overwrite);
     }
 
@@ -116,8 +125,12 @@ class Parser
      * @throws Exception If the key name already exists and the overwrite flag isn't true
      * @return bool Success/fail of file write
      */
-    public function writeEnv(string $keyName, $keyValue, bool $overwrite = false)
-    {
+    public function writeEnv(
+        string $keyName,
+        #[\SensitiveParameter]
+        $keyValue,
+        bool $overwrite = false
+    ) {
         $contents = $this->loadFile($this->configPath);
 
         // read from the .env file, update any that need it or add a new one

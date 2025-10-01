@@ -11,8 +11,10 @@ class KeyString extends KeySource
      *
      * @param string $source File path for the key
      */
-    public function __construct(string $source)
-    {
+    public function __construct(
+        #[\SensitiveParameter]
+        string $source
+    ) {
         $this->setContent($source);
     }
 }
