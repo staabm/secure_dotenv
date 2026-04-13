@@ -15,6 +15,8 @@ final class LazySecret
      */
     private $decrypter;
 
+    private ?string $decrypted = null;
+
     /**
      * @param callable(): ?string $decrypter
      */
@@ -26,12 +28,18 @@ final class LazySecret
         $this->decrypter = $decrypter;
     }
 
+    /**
+     * @throws RuntimeException
+     */
     public function __toString(): string
     {
-        $decrypted = ($this->decrypter)();
-        if (null === $decrypted) {
-            throw new RuntimeException(sprintf('Unable to decrypt secret %s', $this->identifier));
+        if ($this->decrypted === null) {
+            $decrypted = ($this->decrypter)();
+            if (null === $decrypted) {
+                throw new RuntimeException(sprintf('Unable to decrypt secret %s', $this->identifier));
+            }
+            $this->decrypted = $decrypted;
         }
-        return $decrypted;
+        return $this->decrypted;
     }
 }
