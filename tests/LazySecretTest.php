@@ -3,6 +3,7 @@
 namespace staabm\SecureDotenv;
 
 use PHPUnit\Framework\TestCase;
+use function json_encode;
 
 /**
  * @internal
@@ -21,4 +22,16 @@ class LazySecretTest extends TestCase
         $lazy->__toString();
         static::assertSame(1, $i);
     }
+
+    public function testJsonEncode()
+    {
+        $constValue = 'abc';
+        $lazy = new LazySecret('id', static function () use ($constValue) {
+            return $constValue;
+        });
+        static::assertSame('"abc"', json_encode($constValue));
+        static::assertSame('"abc"', json_encode($lazy));
+
+    }
+
 }

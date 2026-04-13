@@ -2,11 +2,12 @@
 
 namespace staabm\SecureDotenv;
 
+use JsonSerializable;
 use RuntimeException;
 
 use function sprintf;
 
-final class LazySecret
+final class LazySecret implements JsonSerializable
 {
     private string $identifier;
 
@@ -41,5 +42,10 @@ final class LazySecret
             $this->decrypted = $decrypted;
         }
         return $this->decrypted;
+    }
+
+    public function jsonSerialize(): string
+    {
+        return $this->__toString();
     }
 }
