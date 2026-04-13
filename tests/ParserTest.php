@@ -4,7 +4,6 @@ namespace staabm\SecureDotenv;
 
 use Exception;
 use InvalidArgumentException;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,9 +54,9 @@ class ParserTest extends TestCase
         $parser = new Parser($this->keyPath, $this->envPath);
         $loadedValues = $parser->loadFile($this->envPath);
 
-        foreach($loadedValues as $loadedValue) {
-            $this->assertInstanceOf(LazySecret::class, $loadedValue);
-            $this->assertEquals('test1234', (string) $loadedValue);
+        foreach ($loadedValues as $loadedValue) {
+            static::assertInstanceOf(LazySecret::class, $loadedValue);
+            static::assertEquals('test1234', (string) $loadedValue);
         }
     }
 

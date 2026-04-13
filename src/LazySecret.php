@@ -33,7 +33,7 @@ final class LazySecret
      */
     public function __toString(): string
     {
-        if ($this->decrypted === null) {
+        if (null === $this->decrypted) {
             $decrypted = ($this->decrypter)();
             if (null === $decrypted) {
                 throw new RuntimeException(sprintf('Unable to decrypt secret %s', $this->identifier));
