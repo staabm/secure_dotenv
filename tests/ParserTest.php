@@ -47,6 +47,19 @@ class ParserTest extends TestCase
         static::assertEquals(190, $parser->save('env1', 'test1234', true));
     }
 
+    public function testLazyParsing()
+    {
+        $this->testSave();
+
+        $parser = new Parser($this->keyPath, $this->envPath);
+        $loadedValues = $parser->loadFile($this->envPath);
+
+        foreach ($loadedValues as $loadedValue) {
+            static::assertInstanceOf(LazySecret::class, $loadedValue);
+            static::assertEquals('test1234', (string) $loadedValue);
+        }
+    }
+
     public function testWriteEnvWithDuplicatedEnv()
     {
         $c = new Crypto(file_get_contents($this->keyPath));
