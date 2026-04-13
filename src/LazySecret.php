@@ -3,7 +3,6 @@
 namespace staabm\SecureDotenv;
 
 use JsonSerializable;
-use RuntimeException;
 
 use function sprintf;
 
@@ -30,14 +29,14 @@ final class LazySecret implements JsonSerializable
     }
 
     /**
-     * @throws RuntimeException
+     * @throws SecretNotDecryptableException
      */
     public function __toString(): string
     {
         if (null === $this->decrypted) {
             $decrypted = ($this->decrypter)();
             if (null === $decrypted) {
-                throw new RuntimeException(sprintf('Unable to decrypt secret %s', $this->identifier));
+                throw new SecretNotDecryptableException(sprintf('Unable to decrypt secret %s', $this->identifier));
             }
             $this->decrypted = $decrypted;
         }
