@@ -34,4 +34,13 @@ class LazySecretTest extends TestCase
 
     }
 
+    public function testSecretNotDecryptableException()
+    {
+        $this->expectException(SecretNotDecryptableException::class);
+        $lazy = new LazySecret('id', static function () {
+            return null;
+        });
+        $lazy->__toString();
+    }
+
 }
