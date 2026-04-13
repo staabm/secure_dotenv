@@ -2,5 +2,8 @@
 
 namespace staabm\SecureDotenv;
 
-class SecretNotDecryptableException extends \Exception
-{}
+use Exception;
+
+class SecretNotDecryptableException extends Exception
+{
+}
