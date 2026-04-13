@@ -6,6 +6,7 @@ use Exception;
 use InvalidArgumentException;
 
 use function is_array;
+use function trim;
 
 class Parser
 {
@@ -57,12 +58,14 @@ class Parser
         foreach ($values as $index => $value) {
             if (is_array($value)) {
                 foreach ($value as $i => $v) {
-                    $de = $this->crypto->decrypt(trim($v));
-                    $values[$index][$i] = (null == $de) ? $v : $de;
+                    $values[$index][$i] = new LazySecret($index.'_'.$i, function () use ($v) {
+                        return $this->crypto->decrypt(trim($v));
+                    });
                 }
             } else {
-                $de = $this->crypto->decrypt(trim($value));
-                $values[$index] = (null == $de) ? $value : $de;
+                $values[$index] = new LazySecret($index, function () use ($value) {
+                    return $this->crypto->decrypt(trim($value));
+                });
             }
         }
         return $values;
