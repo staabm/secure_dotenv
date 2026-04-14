@@ -49,7 +49,7 @@ class Parser
      * Decrypt the values provided
      * Supports sections.
      *
-     * @return array Decrypted values
+     * @return array<LazySecret>|array<array<LazySecret>> Decrypted values
      */
     public function decryptValues(
         #[\SensitiveParameter]
@@ -161,7 +161,7 @@ class Parser
      * Get the contents of the current configuration file.
      *
      * @param string $keyName Name of key to locate [optional]
-     * @return array|string
+     * @return array<LazySecret>|LazySecret
      */
     public function getContent($keyName = null)
     {
