@@ -5,6 +5,7 @@ namespace staabm\SecureDotenv;
 use Defuse\Crypto\Crypto as DefuseCrypto;
 use Defuse\Crypto\Key as DefuseKey;
 use InvalidArgumentException;
+use SensitiveParameter;
 
 use function is_string;
 
@@ -23,7 +24,7 @@ class Crypto
      * @param string $key The "key" value, either a string or a file path
      */
     public function __construct(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $key
     ) {
         $this->setKey($this->createKey($key));
@@ -36,7 +37,7 @@ class Crypto
      * @return KeySource instance
      */
     public function createKey(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         string $key
     ) {
         if (is_file($key)) {
@@ -77,7 +78,7 @@ class Crypto
      * @return string Ciphertext (encrypted) value
      */
     public function encrypt(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $value
     ) {
         // Get the key contents, no sense in keeping it in memory for too long
@@ -94,7 +95,7 @@ class Crypto
      * @return mixed The value if it could be decrypted, otherwse null
      */
     public function decrypt(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $value
     ) {
         try {
