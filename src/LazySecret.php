@@ -32,7 +32,7 @@ final class LazySecret implements JsonSerializable
     /**
      * @throws SecretNotDecryptableException
      */
-    public function __toString(): string
+    public function asString(): string
     {
         if (null === $this->decrypted) {
             if (null === $this->decrypter) {
@@ -51,6 +51,6 @@ final class LazySecret implements JsonSerializable
 
     public function jsonSerialize(): string
     {
-        return $this->__toString();
+        return $this->asString();
     }
 }

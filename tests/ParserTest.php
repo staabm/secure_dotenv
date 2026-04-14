@@ -64,7 +64,7 @@ class ParserTest extends TestCase
 
         foreach ($loadedValues as $loadedValue) {
             static::assertInstanceOf(LazySecret::class, $loadedValue);
-            static::assertSame('test1234', (string) $loadedValue);
+            static::assertSame('test1234', $loadedValue->asString());
         }
     }
 
@@ -90,6 +90,8 @@ class ParserTest extends TestCase
 
         // Now reparse the file
         $parser = new Parser($this->keyPath, $this->envPath);
-        static::assertSame($content, (string) $parser->getContent('readwrite1'));
+        $parsedContent = $parser->getContent('readwrite1');
+        static::assertInstanceOf(LazySecret::class, $parsedContent);
+        static::assertEquals($content, $parsedContent->asString());
     }
 }

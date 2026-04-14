@@ -47,7 +47,7 @@ $envFile = __DIR__.'/.env';
 
 $d = new \staabm\SecureDotenv\Parser($keyfile, $envFile);
 
-// The contents here is the set of all decrypted values fron the .env
+// The contents here is the set of all decrypted values from the .env
 print_r($d->getContent());
 ?>
 ```

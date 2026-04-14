@@ -18,9 +18,9 @@ class LazySecretTest extends TestCase
             ++$i;
             return 'abc';
         });
-        $lazy->__toString();
-        $lazy->__toString();
-        $lazy->__toString();
+        $lazy->asString();
+        $lazy->asString();
+        $lazy->asString();
         static::assertSame(1, $i);
     }
 
@@ -40,6 +40,6 @@ class LazySecretTest extends TestCase
         $lazy = new LazySecret('id', static function () {
             return null;
         });
-        $lazy->__toString();
+        $lazy->asString();
     }
 }
