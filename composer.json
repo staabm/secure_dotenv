@@ -9,7 +9,7 @@
         "environment"
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.1",
         "ext-openssl": "*",
         "ext-hash": "*",
         "defuse/php-encryption": "^2.2",
