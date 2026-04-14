@@ -6,6 +6,7 @@ use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use function file_get_contents;
+use function strlen;
 
 /**
  * @internal
@@ -45,7 +46,12 @@ class ParserTest extends TestCase
         $parser = new Parser($this->keyPath, $this->envPath);
         $parser->setCrypto($c);
 
-        static::assertEquals(190, $parser->save('env1', 'test1234', true));
+        static::assertSame(true, $parser->save('env1', 'test1234', true));
+
+        $envContents = file_get_contents($this->envPath);
+        $this->assertStringStartsWith('env1=', $envContents);
+        $this->assertSame(190, strlen($envContents));
+        $this->assertStringEndsWith("\n", $envContents);
     }
 
     public function testLazyParsing()
@@ -57,21 +63,8 @@ class ParserTest extends TestCase
 
         foreach ($loadedValues as $loadedValue) {
             static::assertInstanceOf(LazySecret::class, $loadedValue);
-            static::assertEquals('test1234', (string) $loadedValue);
+            static::assertSame('test1234', (string) $loadedValue);
         }
-    }
-
-    public function testWriteEnv()
-    {
-        $c = new Crypto(file_get_contents($this->keyPath));
-        $parser = new Parser($this->keyPath, $this->envPath);
-        $parser->setCrypto($c);
-
-        $parser->save('env1', '123456', true);
-        $envContents = file_get_contents($this->envPath);
-        $this->assertStringStartsWith('env1=', $envContents);
-        $this->assertSame(186, strlen($envContents));
-        $this->assertStringEndsWith("\n", $envContents);
     }
 
     public function testWriteEnvWithDuplicatedEnv()
@@ -96,6 +89,6 @@ class ParserTest extends TestCase
 
         // Now reparse the file
         $parser = new Parser($this->keyPath, $this->envPath);
-        static::assertEquals($content, $parser->getContent('readwrite1'));
+        static::assertSame($content, (string) $parser->getContent('readwrite1'));
     }
 }
