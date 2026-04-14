@@ -166,7 +166,7 @@ class Parser
      * @param string $keyName Name of key to locate [optional]
      * @return array<LazySecret>|LazySecret
      */
-    public function getContent(string $keyName = null): array|LazySecret
+    public function getContent(?string $keyName = null): array|LazySecret
     {
         $contents = $this->loadFile($this->configPath);
 
