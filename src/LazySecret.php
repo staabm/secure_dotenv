@@ -3,8 +3,8 @@
 namespace staabm\SecureDotenv;
 
 use JsonSerializable;
-
 use LogicException;
+
 use function sprintf;
 
 final class LazySecret implements JsonSerializable
@@ -35,7 +35,7 @@ final class LazySecret implements JsonSerializable
     public function __toString(): string
     {
         if (null === $this->decrypted) {
-            if ($this->decrypter === null) {
+            if (null === $this->decrypter) {
                 throw new LogicException();
             }
 
