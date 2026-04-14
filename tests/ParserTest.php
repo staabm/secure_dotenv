@@ -5,6 +5,7 @@ namespace staabm\SecureDotenv;
 use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+
 use function file_get_contents;
 use function strlen;
 
@@ -46,12 +47,12 @@ class ParserTest extends TestCase
         $parser = new Parser($this->keyPath, $this->envPath);
         $parser->setCrypto($c);
 
-        static::assertSame(true, $parser->save('env1', 'test1234', true));
+        static::assertTrue($parser->save('env1', 'test1234', true));
 
         $envContents = file_get_contents($this->envPath);
-        $this->assertStringStartsWith('env1=', $envContents);
-        $this->assertSame(190, strlen($envContents));
-        $this->assertStringEndsWith("\n", $envContents);
+        static::assertStringStartsWith('env1=', $envContents);
+        static::assertSame(190, strlen($envContents));
+        static::assertStringEndsWith("\n", $envContents);
     }
 
     public function testLazyParsing()
