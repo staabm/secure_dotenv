@@ -6,15 +6,11 @@ abstract class KeySource
 {
     /**
      * Content of the key.
-     *
-     * @var string
      */
     protected string $content;
 
     /**
      * Get the current key contents.
-     *
-     * @return string
      */
     public function getContent(): string
     {
@@ -23,8 +19,6 @@ abstract class KeySource
 
     /**
      * Set the current key content.
-     *
-     * @param string $content
      */
     public function setContent(string $content): void
     {
