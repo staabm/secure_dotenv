@@ -27,11 +27,9 @@ class File
     }
 
     /**
-     * @param string|array $data
-     *
      * @return ($path is null ? void : bool)
      */
-    public static function write($data, ?string $path = null)
+    public static function write(array $data, ?string $path = null)
     {
         $output = '';
         foreach ($data as $index => $data) {
