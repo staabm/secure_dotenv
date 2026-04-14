@@ -75,6 +75,8 @@ class Parser
      * Read in the configuration file.
      *
      * @param string $configPath Configuration file path
+     *
+     * @return array<LazySecret>|array<array<LazySecret>>
      */
     public function loadFile(string $configPath): array
     {
