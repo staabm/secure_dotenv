@@ -9,14 +9,14 @@ abstract class KeySource
      *
      * @var string
      */
-    protected $content;
+    protected string $content;
 
     /**
      * Get the current key contents.
      *
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -26,7 +26,7 @@ abstract class KeySource
      *
      * @param string $content
      */
-    public function setContent($content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
     }

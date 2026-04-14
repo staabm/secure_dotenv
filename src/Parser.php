@@ -88,7 +88,7 @@ class Parser
     /**
      * Set the current instance of the Crypto class.
      */
-    public function setCrypto(Crypto $crypto)
+    public function setCrypto(Crypto $crypto): void
     {
         $this->crypto = $crypto;
     }
@@ -98,7 +98,7 @@ class Parser
      *
      * @throws InvalidArgumentException If the path is invalid
      */
-    public function setConfigPath(string $configPath)
+    public function setConfigPath(string $configPath): void
     {
         if (empty($configPath) || !is_file($configPath)) {
             throw new InvalidArgumentException('Invalid config file path: ' . $configPath);
