@@ -1,0 +1,175 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Argument of an invalid type array\|string supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/File.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\File\:\:read\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/File.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\File\:\:write\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/File.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\File\:\:write\(\) should return bool\|void but returns int\<0, max\>\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/File.php
+
+		-
+			message: '#^Parameter \#1 \$content of method staabm\\SecureDotenv\\KeySource\:\:setContent\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/KeySource/KeyFile.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\Parser\:\:decryptValues\(\) has parameter \$values with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Parser.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\Parser\:\:getContent\(\) should return array\<staabm\\SecureDotenv\\LazySecret\>\|staabm\\SecureDotenv\\LazySecret but returns array\<array\<staabm\\SecureDotenv\\LazySecret\>\|staabm\\SecureDotenv\\LazySecret\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Parser.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\Parser\:\:writeEnv\(\) has parameter \$keyValue with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Parser.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\CryptoTest\:\:testDecryptWithInvalidValue\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/CryptoTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\CryptoTest\:\:testEncryptDecrypt\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/CryptoTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\CryptoTest\:\:testGetSetKey\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/CryptoTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\CryptoTest\:\:testSetKeyOnInit\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/CryptoTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\KeyFileTest\:\:testConstructorWithInvalidSource\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/KeySource/KeyFileTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\KeySource\\KeyStringTest\:\:testValidInit\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/KeySource/KeyStringTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\LazySecretTest\:\:testDecryptOnce\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/LazySecretTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\LazySecretTest\:\:testJsonEncode\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/LazySecretTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\LazySecretTest\:\:testSecretNotDecryptableException\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/LazySecretTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testConstructor\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testLazyParsing\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testReadWrite\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testSave\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testSetConfigPathWithInvalidPath\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Method staabm\\SecureDotenv\\ParserTest\:\:testWriteEnvWithDuplicatedEnv\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Parameter \#1 \$key of class staabm\\SecureDotenv\\Crypto constructor expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Parameter \#2 \$string of static method PHPUnit\\Framework\\Assert\:\:assertStringEndsWith\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Parameter \#2 \$string of static method PHPUnit\\Framework\\Assert\:\:assertStringStartsWith\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Property staabm\\SecureDotenv\\ParserTest\:\:\$envPath has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: tests/ParserTest.php
+
+		-
+			message: '#^Property staabm\\SecureDotenv\\ParserTest\:\:\$keyPath has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: tests/ParserTest.php
