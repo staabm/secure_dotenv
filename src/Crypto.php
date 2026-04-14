@@ -56,7 +56,7 @@ class Crypto
      *
      * @param KeySource $key instance
      */
-    public function setKey(KeySource $key)
+    public function setKey(KeySource $key): void
     {
         $this->key = $key;
     }
@@ -66,7 +66,7 @@ class Crypto
      *
      * @return KeySource instance
      */
-    public function getKey()
+    public function getKey(): KeySource
     {
         return $this->key;
     }

@@ -6,27 +6,21 @@ abstract class KeySource
 {
     /**
      * Content of the key.
-     *
-     * @var string
      */
-    protected $content;
+    protected string $content;
 
     /**
      * Get the current key contents.
-     *
-     * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
     /**
      * Set the current key content.
-     *
-     * @param string $content
      */
-    public function setContent($content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
     }
