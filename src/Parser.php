@@ -4,6 +4,7 @@ namespace staabm\SecureDotenv;
 
 use Exception;
 use InvalidArgumentException;
+use SensitiveParameter;
 
 use function is_array;
 use function trim;
@@ -33,7 +34,7 @@ class Parser
      * @param string $configPath Path to the .env configuration file
      */
     public function __construct(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $key,
         $configPath = null
     ) {
@@ -52,7 +53,7 @@ class Parser
      * @return array<LazySecret>|array<array<LazySecret>> Decrypted values
      */
     public function decryptValues(
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         array $values
     ): array {
         foreach ($values as $index => $value) {
@@ -115,7 +116,7 @@ class Parser
      */
     public function save(
         $keyName,
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $keyValue,
         $overwrite = false
     ): bool {
@@ -132,7 +133,7 @@ class Parser
      */
     public function writeEnv(
         string $keyName,
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         $keyValue,
         bool $overwrite = false
     ) {
