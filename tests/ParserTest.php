@@ -5,6 +5,7 @@ namespace staabm\SecureDotenv;
 use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use function file_get_contents;
 
 /**
  * @internal
@@ -58,6 +59,19 @@ class ParserTest extends TestCase
             static::assertInstanceOf(LazySecret::class, $loadedValue);
             static::assertEquals('test1234', (string) $loadedValue);
         }
+    }
+
+    public function testWriteEnv()
+    {
+        $c = new Crypto(file_get_contents($this->keyPath));
+        $parser = new Parser($this->keyPath, $this->envPath);
+        $parser->setCrypto($c);
+
+        $parser->save('env1', '123456', true);
+        $envContents = file_get_contents($this->envPath);
+        $this->assertStringStartsWith('env1=', $envContents);
+        $this->assertSame(186, strlen($envContents));
+        $this->assertStringEndsWith("\n", $envContents);
     }
 
     public function testWriteEnvWithDuplicatedEnv()
