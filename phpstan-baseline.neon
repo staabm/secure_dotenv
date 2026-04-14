@@ -31,12 +31,6 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: '#^Method staabm\\SecureDotenv\\Parser\:\:getContent\(\) should return array\<staabm\\SecureDotenv\\LazySecret\>\|staabm\\SecureDotenv\\LazySecret but returns array\<array\<staabm\\SecureDotenv\\LazySecret\>\|staabm\\SecureDotenv\\LazySecret\>\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: '#^Method staabm\\SecureDotenv\\Parser\:\:writeEnv\(\) has parameter \$keyValue with no type specified\.$#'
 			identifier: missingType.parameter
 			count: 1
@@ -167,3 +161,4 @@ parameters:
 			identifier: missingType.property
 			count: 1
 			path: tests/ParserTest.php
+

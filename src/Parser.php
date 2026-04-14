@@ -164,7 +164,7 @@ class Parser
      * Get the contents of the current configuration file.
      *
      * @param string $keyName Name of key to locate [optional]
-     * @return array<LazySecret>|LazySecret
+     * @return ($keyName is string ? array<LazySecret>|LazySecret : array<LazySecret>|array<array<LazySecret>>)
      */
     public function getContent(?string $keyName = null): array|LazySecret
     {
