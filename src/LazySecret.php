@@ -6,9 +6,6 @@ use LogicException;
 
 use function sprintf;
 
-/**
- * @internal
- */
 final class LazySecret implements Secret
 {
     private string $identifier;
