@@ -11,13 +11,13 @@ use function json_encode;
  */
 class RawSecretTest extends TestCase
 {
-    public function testAsString()
+    public function testAsString(): void
     {
         $secret = new RawSecret('my-secret');
         static::assertSame('my-secret', $secret->asString());
     }
 
-    public function testJsonEncode()
+    public function testJsonEncode(): void
     {
         $constValue = 'abc';
         $secret = new RawSecret($constValue);
