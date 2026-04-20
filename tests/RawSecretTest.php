@@ -24,5 +24,4 @@ class RawSecretTest extends TestCase
         static::assertSame('"abc"', json_encode($constValue));
         static::assertSame('"abc"', json_encode($secret));
     }
-
 }

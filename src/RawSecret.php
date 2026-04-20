@@ -2,18 +2,18 @@
 
 namespace staabm\SecureDotenv;
 
-use JsonSerializable;
-
 /**
- * Mainly useful for unit-tests or example/dummy/fake-secrets
+ * Mainly useful for unit-tests or example/dummy/fake-secrets.
  */
-final class RawSecret implements JsonSerializable
+final class RawSecret implements Secret
 {
     public function __construct(
         private string $secret
-    ) {}
+    ) {
+    }
 
-    public function asString(): string {
+    public function asString(): string
+    {
         return $this->secret;
     }
 
