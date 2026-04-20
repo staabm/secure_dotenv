@@ -2,12 +2,14 @@
 
 namespace staabm\SecureDotenv;
 
-use JsonSerializable;
 use LogicException;
 
 use function sprintf;
 
-final class LazySecret implements JsonSerializable
+/**
+ * @internal
+ */
+final class LazySecret implements Secret
 {
     private string $identifier;
 
