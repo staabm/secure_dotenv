@@ -7,6 +7,9 @@ namespace staabm\SecureDotenv;
  */
 final class RawSecret implements Secret
 {
+    /**
+     * @param non-empty-string $secret
+     */
     public function __construct(
         private string $secret
     ) {
