@@ -2,8 +2,8 @@
 
 namespace staabm\SecureDotenv;
 
-use Exception;
+use RuntimeException;
 
-class SecretNotDecryptableException extends Exception
+class SecretNotDecryptableException extends RuntimeException
 {
 }
