@@ -11,14 +11,17 @@ final class LazySecret implements Secret
     private string $identifier;
 
     /**
-     * @var null|callable(): ?string
+     * @var null|callable(): ?non-empty-string
      */
     private $decrypter;
 
+    /**
+     * @var ?non-empty-string
+     */
     private ?string $decrypted = null;
 
     /**
-     * @param callable(): ?string $decrypter
+     * @param callable(): ?non-empty-string $decrypter
      */
     public function __construct(
         string $identifier,
@@ -39,7 +42,7 @@ final class LazySecret implements Secret
             }
 
             $decrypted = ($this->decrypter)();
-            if (null === $decrypted) {
+            if (null === $decrypted || '' === $decrypted) {
                 throw new SecretNotDecryptableException(sprintf('Unable to decrypt secret %s', $this->identifier));
             }
             $this->decrypted = $decrypted;
