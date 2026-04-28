@@ -109,4 +109,4 @@ This tool will ask a few questions about the location of the `.env` file and the
 
 ## Credits
 
-this package is a maintained for of https://github.com/psecio/secure_dotenv originally created by [Chris Cornutt aka @enygma](https://github.com/enygma) 
+this package is a maintained fork of https://github.com/psecio/secure_dotenv originally created by [Chris Cornutt aka @enygma](https://github.com/enygma) 
